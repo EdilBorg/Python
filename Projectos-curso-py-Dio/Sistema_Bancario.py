@@ -1,0 +1,54 @@
+mensagem = "Sistema Bancario"
+mensagem_deposito = "Deposito"
+mensagem_saque = "Deposito"
+mensagem_extrato = "Extrato"
+extrato = ""
+saldo  = 0
+print("\n", mensagem.center(25))
+while True:
+    print("[1] Deposito\n[2] Saque\n[3] Extrato\n[0] Sair")
+    opcao = int(input("Escolha uma opção valida: "))
+    if opcao > 3 or opcao < 0:
+        print("Opcao invalida!")
+        continue
+    elif(opcao == 1):
+        print("\n", mensagem_deposito.center(25))
+        while True:
+            valor = int(input("digite o valor: "))
+            if valor < 1:
+                print("Deposito invalido\nTente novamente:")
+            else:
+                saldo+= valor
+                extrato+= f"\nDeposito:R$ {valor}"
+                print(f"Deposito de {valor} feito com sucesso!\n")
+                break
+    elif(opcao == 2):
+        print("\n", mensagem_saque.center(25))
+        for i in range(2):
+            saque = int(input("Digite o valor de saque: "))
+            if saque > saldo:
+                print("Não tens Saldo suficiente!")
+                if i == 1:
+                    print()
+            else:
+                saldo-=saque
+                extrato+= f"\nSaque:R$ {saque}"
+                print(f"Saque de {saque} feito com sucesso!\n")
+                break
+    elif(opcao == 3):
+        print("\n", mensagem_extrato.center(25))
+        if extrato == "":
+            print("Nenhuma movimentacao feita\n")
+        else:
+            print(extrato)
+            print(f"Saldo total: R$ {saldo}\n")
+
+    elif(opcao == 0):
+        print("ENCERADO!\n")
+        break
+
+        
+
+
+
+
